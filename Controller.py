@@ -11,8 +11,8 @@ class Controller():
         
         cv2.namedWindow("Control Window")
 
-        self.rval, self.frame = self.capture(vc)
-        if rval:
+        self.rval, self.frame = self.capture(self.vc)
+        if self.rval:
             self.of = self.InitOpticaFlow(self.frame)
         
         self.sensitivity = 1
@@ -39,7 +39,7 @@ class Controller():
         elif key == ord('f'):   # save
             self.flipImage = not self.flipImage
             print("Flip image: " + {True:"ON", False:"OFF"}.get(self.flipImage))
-        
+        print("disp_x",disp_x)
         if(disp_x > 50*self.sensitivity):
             return 1
         elif(disp_x < -50*self.sensitivity):

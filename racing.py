@@ -1,6 +1,7 @@
 import pygame
 import time
 import random
+from Controller import *
 
 display_width = 800
 display_height = 600
@@ -19,6 +20,7 @@ clock = pygame.time.Clock()
 
 carImg = pygame.image.load('racecar.png')
 carImg = pygame.transform.scale(carImg, (75,157))
+input_control = Controller()
 ###
 
 #obstacle render
@@ -65,16 +67,7 @@ def game_loop():
                 pygame.quit()
                 quit()
 
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    x_change = -5
-                if event.key == pygame.K_RIGHT:
-                    x_change = 5
-
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                    x_change = 0
-
+        x_change = input_control.GetInput()*8
         x += x_change
         gameDisplay.fill(black)
 
