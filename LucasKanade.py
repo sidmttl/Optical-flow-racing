@@ -51,13 +51,14 @@ class LucasKanadeOpticalFlow():
         temp_x/= p1.shape[0]
         self.sum_x += temp_x
 
+        #solely for debugging and parameter tuning
         print("sum_x = ", self.sum_x)
 
         #update the previous frame and previous points
         self.old_gray = frame_gray.copy()
         self.p0 = good_new.reshape(-1,1,2)
 
-        return img
+        return (img, self.sum_x)
 
 
 def CreateOpticalFlow():
