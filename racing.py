@@ -1,7 +1,14 @@
 import pygame
 import time
 import random
+import os
 from Controller import *
+
+display_pos_x = 450
+display_pos_y = 30
+
+os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (display_pos_x,display_pos_y)
+
 
 display_width = 800
 display_height = 600

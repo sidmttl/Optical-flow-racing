@@ -10,6 +10,9 @@ class Controller():
             exit(-1)
         
         cv2.namedWindow("Control Window")
+        cv2.moveWindow("Control Window", 10,10)
+        cv2.namedWindow("Live Camera")
+        cv2.moveWindow("Live Camera",10,350)
 
         self.rval, self.frame = self.capture(self.vc)
         if self.rval:
@@ -24,7 +27,10 @@ class Controller():
         self.rval, frame = self.capture(self.vc)
 
         ### do it
+        video_frame = cv2.resize(frame,(400,300),fx=0,fy=0,interpolation=cv2.INTER_CUBIC)
+        cv2.imshow("Live Camera", video_frame)
         img, disp_x = self.of.apply(frame)
+        img = cv2.resize(img,(400,300),fx=0,fy=0,interpolation=cv2.INTER_CUBIC)
         cv2.imshow("Control Window", img)
 
         ### key operation
@@ -50,6 +56,7 @@ class Controller():
     def __del__(self):
         self.vc.release()
         cv2.destroyWindow("Control Window")
+        cv2.destroyWindow("Live Camera")
 
     def capture(self, vc):
         rval, frame = vc.read()
