@@ -1,6 +1,6 @@
 # Optical-flow-racing
 
-![Video GIF](Optical_Flow_racing.gif)
+![Video GIF](Optical_Flow_Racing.gif)
 
 This project is an implementation of Lucas Kanade algorithm for extracting optical flow using OpenCV directly from a webcam to play a fun racing game.
 
